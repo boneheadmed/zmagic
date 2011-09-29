@@ -1,0 +1,38 @@
+A plugin for the Impact javascript game engine (http://impactjs.com/). This plugin extends ig.Game and ig.Entity with functions to directly manipulate the z index.
+
+How to use:
+Create a new plugins folder if one does not exist: lib/plugins
+Create a new folder called zmagic: lib/plugins/zmagic
+Place the zmagic.js file within that folder.
+Within the main.js file, require: 'plugins.zmagic.zmagic'
+
+Usage:
+
+1) Initialize zmagic:
+
+Within your main game's init function:
+
+  init: function(){
+        ....
+        new ig.Zmagic();
+        ....
+  }
+
+2) ig.Game.swapIndex function
+
+   Used when you have a situation where you want to put one entity in front of another, but don't won't to modify the z index directly and sort, etc.  
+   
+       ig.game.swapzIndex(entityA, entityB);
+
+3) ig.Entity.moveToFront
+
+   Used to place an entity at the "front" or top of the list of entities. For example if you had a pointer entity that should always be above any newly generated entities. Within that enity:
+
+      update: function() {
+          ...
+          this.moveToFront();
+          this.parent();
+      }
+
+ 
+
