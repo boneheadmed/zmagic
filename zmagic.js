@@ -35,12 +35,14 @@ ig.Zmagic = ig.Class.extend({
         });
 
         ig.Entity.inject({
-            moveToFront: function() {
-                //Find the "topmost" entity and swap its actual z index with
-                //the calling entity's current z index.
-                last = ig.game.entities.length - 1;
-                ig.game.swapzIndex(this, ig.game.entities[last]);
-            }
+                //Move calling Entity to the front
+                //slightly modified from branch of quidmonkey
+	            	moveToFront: function() {
+	            		var ents = ig.game.entities;
+	                	ents.splice( ents.indexOf( this ), 1 );
+	                	ents.push( this );
+	            	}
+ 
         });
 
         ig.Zmagic.instance = this;
